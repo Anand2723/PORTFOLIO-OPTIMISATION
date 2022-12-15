@@ -125,20 +125,20 @@ def get_rec_bipart(cov, sort_ix):
 
 #************************************************************* METHODS TO COMPARE THE STRATEGY ************************************************************************
 
-# Compute the weights according to minimum variance method 
+# Compute the weights according to 'minimum variance' method 
 def compute_MV_weights(covariances):
     inv_covar = np.linalg.inv(covariances)
     u = np.ones(len(covariances))
     x = np.dot(inv_covar, u) / np.dot(u, np.dot(inv_covar, u))
     return pd.Series(x, index = stocks_compl, name="MV")
 
-# Compute the weights according to methods
+# Compute the weights according to 'risk parity' method
 def compute_RP_weights(covariances):
     weights = (1 / np.diag(covariances))
     x = weights / sum(weights)
     return pd.Series(x, index = stocks_compl, name="RP")
 
-# Compute the weights according to uniform weights method
+# Compute the weights according to 'uniform weights' method
 def compute_unif_weights(covariances):
     x = [1 / len(covariances) for i in range(len(covariances))]
     return pd.Series(x, index = stocks_compl, name="unif")
