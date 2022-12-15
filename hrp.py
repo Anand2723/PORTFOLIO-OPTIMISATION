@@ -260,6 +260,8 @@ data.append(diversification_ratio(weights_unif, cov))
 dr = pd.DataFrame(data = data, index=["HRP", "MV", "RP", "unif"],
 columns = ["Div Ratio"])
 
+#************************************************************************* FINAL RESULTS *****************************************************************************
+
 # Join all the dataframes constructed in one dataframe to get final results 
 final_results = ers.join(volatility)
 final_results = final_results.join(sharpe_R)
